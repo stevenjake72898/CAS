@@ -1,0 +1,16 @@
+<?php
+  include "conn.php";
+
+  if(isset($_POST['username']) && isset($_POST['password'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $loginQuery = "SELECT * FROM user_account WHERE username = '$username' AND password = '$password'";
+    $loginResult = mysqli_query($conn, $loginQuery);
+    $loginRow = mysqli_num_rows($loginResult);    
+    if($loginRow >= 1){
+      echo "okay";
+    } else {
+      echo "error";
+    }
+  }
+?>
